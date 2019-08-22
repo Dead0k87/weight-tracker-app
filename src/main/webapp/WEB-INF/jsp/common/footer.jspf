@@ -1,0 +1,69 @@
+<script src="webjars/jquery/1.9.1/jquery.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
+<script src="webjars/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+<script src="webjars/chartjs/2.8.0/Chart.js"></script>
+
+
+</body>
+</html>
+<%--NAV BAR--%>
+<script>
+    $(".nav a").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+</script>
+
+<%--Date picker--%>
+<%--Initialization # - is a field name identification --%>
+<script type="text/javascript">
+    $('#date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    });
+</script>
+
+
+
+
+<%--Chart --%>
+<script type="text/javascript">
+    var ctx = document.getElementById('chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [${labels}],
+            datasets:
+                [{
+                    label: 'Measures by Date',
+                    data: [${weights}],
+                    backgroundColor: 'transparent', //transparent
+                    borderColor: 'rgba(255, 99, 132)', //255, 99, 132
+                    borderWidth: 3
+                },
+                    // {
+                    //     label: 'Data 2',
+                    //     data: [10, 11, 12, 13, 14, 15],
+                    //     backgroundColor: 'transparent',
+                    //     borderColor: 'rgba(0, 255, 255)',
+                    //     borderWidth: 3
+                    // }
+                ]
+        },
+        options: {
+            scales: {
+                yAxes: [{beginAtZero: false, gridLines: {display: false}}],
+                xAxes: [{autoskip: true, maxTicketsLimit: 20, gridLines: {display: false}}]
+            },
+
+            tooltips: {mode: 'index'},
+            legend: {display: true, position: 'top', labels: {fontColor: 'rgb(255,255,255)', fontSize: 16}}
+
+        }
+    });
+</script>
+
+</body>
+</html>
