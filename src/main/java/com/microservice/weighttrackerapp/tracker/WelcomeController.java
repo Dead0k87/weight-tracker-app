@@ -1,4 +1,4 @@
-package com.microservice.weighttrackerapp.tracker.security;
+package com.microservice.weighttrackerapp.tracker;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +16,6 @@ public class WelcomeController {
     @GetMapping(value = "/")
     public String showWelcomePage(ModelMap model) { //@RequestParam String name,
         model.put("name", getLoggedInUserName());
-
         return "welcomePage"; //jsp
     }
 

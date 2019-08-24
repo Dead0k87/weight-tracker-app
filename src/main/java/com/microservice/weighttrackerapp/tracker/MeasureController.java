@@ -98,6 +98,10 @@ public class MeasureController {
     @GetMapping("/show-chart")
     public String showChart(ModelMap model) {
         List<Measure> measures = repository.findByName(getLoggedInUserName());
+
+        if(measures.size()==0){
+            return "blankChartPage";
+        }
         Collections.sort(measures);
         Collections.reverse(measures);
         StringBuffer sbWeights = new StringBuffer();
