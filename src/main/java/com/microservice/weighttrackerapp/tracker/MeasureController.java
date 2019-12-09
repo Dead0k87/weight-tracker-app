@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -99,15 +100,19 @@ public class MeasureController {
     public String showChart(ModelMap model) {
         List<Measure> measures = repository.findByName(getLoggedInUserName());
 
-        if(measures.size()==0){
+        if (measures.size() == 0) {
             return "blankChartPage";
         }
+
+
+
         Collections.sort(measures);
         Collections.reverse(measures);
         StringBuffer sbWeights = new StringBuffer();
         StringBuffer sbLabels = new StringBuffer();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 
         for (int i = 0; i < measures.size(); i++) {
             sbWeights.append(measures.get(i).getWeight()).append(",");

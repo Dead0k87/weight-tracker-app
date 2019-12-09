@@ -5,7 +5,9 @@
 <%--add java script files--%>
 <div class="container">
     <h2> ${name} </br></br> ADD NEW MEASURE:</h2>
-    <form:form method="POST" modelAttribute="measure">
+   
+
+ <form:form method="POST" modelAttribute="measure">
         <form:hidden path="id"/>
         <fieldset class="form-group">
                 <%--path is a name of the field in Measure bean--%>
